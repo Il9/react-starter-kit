@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+
+    // Module
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+
+    // Path
+    "baseUrl": ".",
+    "paths": {
+      "src": ["./src"],
+      "@Types": ["src/types"],
+      "@Components": ["src/@types/components"],
+      "@Hooks": ["./src/hooks"],
+      "@Pages": ["./src/pages"],
+      "@store": ["./src/store"],
+      "@Utils": ["./src/utils"],
+    },
+
+    // Log
+    "locale": "ko",
+    "pretty": true,
+
+    // JS
+    "allowJs": false,
+
+    // React
+    "jsx": "preserve",
+    
+    // Lint
+    "strict": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    // Edit Outfile
+    "noEmit": true,
+
+    // More Spec
+    "lib": ["dom", "es2017"],
+
+    // Etc
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+
+  },
+  "exclude": ["node_modules"],
+  "include": ["src"]
+}
