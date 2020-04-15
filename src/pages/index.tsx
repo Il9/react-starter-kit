@@ -1,9 +1,33 @@
 import { NextPage } from 'next';
+import Link from 'next/link';
 
-const IndexPage: NextPage<{ temp: string }> = ({ temp }) => <div>{temp}</div>;
+import { Button } from '@components/Atoms';
 
-IndexPage.getInitialProps = async () => {
-  return { temp: '테스트 입니다.' };
+// Props Type
+type IndexPageProps = {
+  initialProp: string;
 };
 
+// Component
+const IndexPage: NextPage<IndexPageProps> = ({ initialProp }) => {
+  return (
+    <>
+      <Link href="/login">
+        <Button color="primary" variant="outlined">
+          Go Login
+        </Button>
+      </Link>
+      <div>{initialProp}</div>
+    </>
+  );
+};
+
+// Initial Props
+IndexPage.getInitialProps = async () => {
+  const initialProp = 'Index Page';
+
+  return { initialProp };
+};
+
+// Export
 export default IndexPage;

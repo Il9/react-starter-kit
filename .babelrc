@@ -1,0 +1,30 @@
+{
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": {},
+        "transform-runtime": {},
+        "styled-jsx": {},
+        "class-properties": {}
+      }
+    ]
+  ],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./"],
+      "alias": {
+        "@src": "./src",
+        "@components": "./src/components",
+        "@core": "./src/core",
+        "@api": "./src/core/api",
+        "@config": "./src/core/config",
+        "@util": "./src/core/util",
+        "@hooks": "./src/hooks",
+        "@pages": "./src/pages",
+        "@store": "./src/store",
+        "@types": "./src/types"
+      }
+    }]
+  ]
+}

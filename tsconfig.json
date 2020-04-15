@@ -10,13 +10,24 @@
     // Path
     "baseUrl": ".",
     "paths": {
-      "src": ["./src"],
-      "@Types": ["src/types"],
-      "@Components": ["src/@types/components"],
-      "@Hooks": ["./src/hooks"],
-      "@Pages": ["./src/pages"],
-      "@store": ["./src/store"],
-      "@Utils": ["./src/utils"],
+      "@src": ["src"],
+      "@components": ["src/components"],
+      "@components/*": ["src/components/*"],
+      "@core": ["src/core"],
+      "@api": ["src/core/api"],
+      "@api/*": ["src/core/api/*"],
+      "@config": ["src/core/config"],
+      "@config/*": ["src/core/config/*"],
+      "@util": ["src/core/util"],
+      "@util/*": ["src/core/util/*"],
+      "@hooks": ["src/hooks"],
+      "@hooks/*": ["src/hooks/*"],
+      "@pages": ["src/pages"],
+      "@pages/*": ["src/pages/*"],
+      "@store": ["src/store"],
+      "@store/*": ["src/store/*"],
+      "@types": ["src/types"],
+      "@types/*": ["src/types/*"]
     },
 
     // Log
@@ -24,15 +35,13 @@
     "pretty": true,
 
     // JS
-    "allowJs": false,
+    "allowJs": true,
 
     // React
     "jsx": "preserve",
     
     // Lint
     "strict": true,
-    "alwaysStrict": true,
-    "noImplicitAny": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -47,9 +56,8 @@
     "skipLibCheck": true,
     "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-
+    "resolveJsonModule": true
   },
-  "exclude": ["node_modules"],
-  "include": ["src"]
+  "include": ["next-env.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["node_modules", ".next"],
 }
