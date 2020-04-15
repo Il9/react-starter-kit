@@ -23,11 +23,11 @@ const useStyles = makeStyles(() =>
 
 // Props Type
 type LoginPageProps = {
-  temp: string;
+  initailProp: string;
 };
 
 // Component
-const LoginPage: NextPage<LoginPageProps> = ({ temp }) => {
+const LoginPage: NextPage<LoginPageProps> = ({ initailProp }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const app = useSelector((state: RootState) => state.app);
@@ -43,16 +43,15 @@ const LoginPage: NextPage<LoginPageProps> = ({ temp }) => {
           <Grid container justify="center" alignItems="center" className="h-full mb-10">
             <img className="w-2/5 mb-5" src="/static/logo.png" alt="login-logo" />
           </Grid>
-          <TextField type="email" variant="filled" label="Email" size="small" className="mb-2 text-white" fullWidth />
+          <TextField type="email" variant="filled" size="small" className="mb-2 text-white" fullWidth />
           <TextField type="password" variant="filled" label="Password" size="small" className="mb-5" fullWidth />
           <Button type="button" variant="contained" color="primary" size="large" onClick={onClick2} fullWidth>
-            Login
+            {initailProp}
           </Button>
 
           <div>{app.auth ? 'Success' : 'Failure'}</div>
           {app.loading && <div>Loading...</div>}
           {app.error && <div>{app.error}</div>}
-          <div>{temp}</div>
         </Grid>
       </Grid>
     </Container>
@@ -61,9 +60,9 @@ const LoginPage: NextPage<LoginPageProps> = ({ temp }) => {
 
 // Initial Props
 LoginPage.getInitialProps = async () => {
-  const temp = 'Login Page';
+  const initailProp = 'Login';
 
-  return { temp };
+  return { initailProp };
 };
 
 // Export
