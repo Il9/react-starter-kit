@@ -17,3 +17,7 @@ Material UI + Tailwind CSS
 
 ## Lint
 ESLint + Prettier
+
+# Run
+yarn dev - 3000 port
+yarn build & serve out - 5000 port
