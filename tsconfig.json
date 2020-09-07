@@ -18,16 +18,20 @@
       "@api/*": ["src/core/api/*"],
       "@config": ["src/core/config"],
       "@config/*": ["src/core/config/*"],
+      "@service": ["src/core/service"],
+      "@service/*": ["src/core/service/*"],
       "@util": ["src/core/util"],
       "@util/*": ["src/core/util/*"],
       "@hooks": ["src/hooks"],
       "@hooks/*": ["src/hooks/*"],
+      "@models": ["src/models"],
+      "@models/*": ["src/models/*"],
       "@pages": ["src/pages"],
       "@pages/*": ["src/pages/*"],
       "@store": ["src/store"],
       "@store/*": ["src/store/*"],
-      "@types": ["src/types"],
-      "@types/*": ["src/types/*"]
+      "@styles": ["src/styles"],
+      "@stores/*": ["src/styles/*"]
     },
 
     // Log
@@ -42,9 +46,9 @@
     
     // Lint
     "strict": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
 
     // Edit Outfile
     "noEmit": true,
@@ -59,5 +63,5 @@
     "resolveJsonModule": true
   },
   "include": ["next-env.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],
-  "exclude": ["node_modules", ".next"],
+  "exclude": ["node_modules", ".next", "out"],
 }

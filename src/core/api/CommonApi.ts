@@ -1,9 +1,14 @@
-import { ApiUtil } from '@util';
+import { ApiService } from '@service';
 
-export async function authentication(data: string) {
-  await new Promise(resolve => {
-    setTimeout(resolve, 2000);
-  });
+const request = ApiService.createRequest();
 
-  return ApiUtil.createRequest()<string, string>('authentication', data);
+export type GetAuthPayload = {
+  email: string;
+  password: string;
+};
+export type GetAuthResponse = {
+  token: string;
+};
+export function getAuth(payload: GetAuthPayload) {
+  return request<GetAuthResponse>('getAuth', payload);
 }

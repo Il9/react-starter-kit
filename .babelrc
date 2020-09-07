@@ -19,11 +19,13 @@
         "@core": "./src/core",
         "@api": "./src/core/api",
         "@config": "./src/core/config",
+        "@service": "./src/core/service",
         "@util": "./src/core/util",
         "@hooks": "./src/hooks",
+        "@models": "./src/models",
         "@pages": "./src/pages",
         "@store": "./src/store",
-        "@types": "./src/types"
+        "@styles": "./src/styles"
       }
     }]
   ]

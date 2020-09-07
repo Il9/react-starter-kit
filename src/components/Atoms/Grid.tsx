@@ -1,17 +1,12 @@
-import React from 'react';
-
 import MuiGrid, { GridProps as MuiGridProps } from '@material-ui/core/Grid';
 
 // Props Type
-type GridProps = {} & MuiGridProps;
+export type GridProps = {} & MuiGridProps;
 
 // Component
-function Grid(props: GridProps) {
-  return <MuiGrid {...props}>{props.children}</MuiGrid>;
+export default function Grid({ children, ...props }: GridProps) {
+  return <MuiGrid {...props}>{children}</MuiGrid>;
 }
 
 // Initial Props
 Grid.defaultProps = {};
-
-// Export
-export default Grid;

@@ -1,9 +1,10 @@
 import { AsyncActionCreatorBuilder } from 'typesafe-actions';
 import { call, put } from 'redux-saga/effects';
+import { AxiosResponse } from 'axios';
 
-type PromiseCreatorFunction<P, T> = ((payload: P) => Promise<T>) | (() => Promise<T>);
+import { TypeUtil } from '@util';
 
-export const createAsyncSagaEntity = <
+export function createAsyncSagaEntity<
   RequestType,
   RequestPayload,
   SuccessType,
@@ -16,30 +17,36 @@ export const createAsyncSagaEntity = <
     [SuccessType, [SuccessPayload, undefined]],
     [FailureType, [FailurePayload, undefined]]
   >,
-  asyncFunction: PromiseCreatorFunction<RequestPayload, SuccessPayload>,
-  successFunc?: any,
-  failureFunc?: any
-) => {
+  asyncFunction: TypeUtil.PromiseCreator<RequestPayload, AxiosResponse<SuccessPayload>>,
+  successFunc?: (successPayload: SuccessPayload, requestPayload: RequestPayload) => void,
+  failureFunc?: (data: FailurePayload) => void
+) {
   return function* saga(action: ReturnType<typeof asyncAction.request>) {
     try {
       // call async api
-      const result: SuccessPayload = yield call(asyncFunction, (action as any).payload);
+      const response: TypeUtil.Unpacked<typeof asyncFunction> = yield call(asyncFunction, (action as any).payload);
+
+      const successPayload = response.data;
+      const requestPayload: RequestPayload = JSON.parse(response.config.data);
 
       // success
-      yield put(asyncAction.success(result));
+      yield put(asyncAction.success(successPayload));
 
       if (successFunc) {
         // success callback
-        yield call(successFunc, result);
+        yield call(successFunc, successPayload, requestPayload);
       }
     } catch (err) {
+      const errRes = err?.data?.error;
+      const errInstance = errRes instanceof Error ? errRes : new Error(errRes);
+
       // failure
-      yield put(asyncAction.failure(err));
+      yield put(asyncAction.failure(errInstance as any));
 
       if (failureFunc) {
         // failure callback
-        yield call(failureFunc, err);
+        yield call(failureFunc, errInstance as any);
       }
     }
   };
-};
+}
