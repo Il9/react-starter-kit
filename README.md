@@ -1,4 +1,4 @@
-# React-Skeleton
+# React-Starter-Kit
 
 ## Base
 React.JS with TypeScript
@@ -12,7 +12,7 @@ Redux + Redux-Saga
 ## Component Design Pattern
 Atomic Design
 
-## UI & Css Library
+## UI & Css
 Material UI + Tailwind CSS
 
 ## Lint

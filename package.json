@@ -1,8 +1,8 @@
 {
-  "name": "react-skeleton",
+  "name": "react-starter-kit",
   "version": "1.0.0",
   "private": true,
-  "description": "React Skeleton",
+  "description": "React Starter Kit",
   "main": "index.js",
   "repository": "git@github.com:Il9/React-Skeleton.git",
   "scripts": {
